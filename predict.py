@@ -98,6 +98,7 @@ sample_dir = r"brats2018_reduced\MICCAI_BraTS_2018_Data_Validation\Brats18_CBICA
 n=155
 # n=100
 step = 3
+# step = 1
 # step = 30
 for si in range(0,n,step):
     
@@ -182,7 +183,7 @@ for si in range(0,n,step):
                             w = int(vid_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
                             h = int(vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
                         else:  # stream
-                            fps, w, h = 5, vis.shape[1], vis.shape[0]
+                            fps, w, h = 30, vis.shape[1], vis.shape[0]
                         save_path = str(Path(save_path).with_suffix('.mp4'))  # force *.mp4 suffix on results videos
                         vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                     vid_writer.write(vis)
@@ -197,3 +198,4 @@ for si in range(0,n,step):
 
 if save_mode == 'video':
     vid_writer.release()
+cv2.destroyAllWindows()
